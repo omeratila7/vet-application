@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Pet System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<div th:replace="fragments/nav :: navbar"></div>
+<div class="container my-2">
+    <h1>Pet List</h1>
+
+    <a th:href="@{/new-pet-form}" class="btn btn-primary btn-sm mb-3"> Add New Pet </a>
+
+    <table class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>
+                <a th:href="@{'/pagePet/' + ${currentPage} + '?sortField=specie&sortDir=' + ${reverseSortDir}}">Specie</a>
+            </th>
+            <th>
+                <a th:href="@{'/pagePet/' + ${currentPage} + '?sortField=type&sortDir=' + ${reverseSortDir}}">Type</a>
+            </th>
+            <th>
+                <a th:href="@{'/pagePet/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Name</a>
+            </th>
+            <th>
+                <a th:href="@{'/pagePet/' + ${currentPage} + '?sortField=age&sortDir=' + ${reverseSortDir}}">Age</a>
+            </th>
+            <th> Description</th>
+            <th>
+                <a th:href="@{'/pagePet/' + ${currentPage} + '?sortField=owner.name&sortDir=' + ${reverseSortDir}}">Owner</a>
+            </th>
+            <th> Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pet : ${listPets}">
+            <td th:text="${pet.specie}"></td>
+            <td th:text="${pet.type}"></td>
+            <td th:text="${pet.name}"></td>
+            <td th:text="${pet.age}"></td>
+            <td th:text="${pet.description}"></td>
+            <td th:text="${pet.owner.name}"></td>
+            <td>
+                <a th:href="@{/update-pet-form/{id}(id=${pet.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/delete-pet/{id}(id=${pet.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div th:if="${totalPages > 1}">
+        <div class="row col-sm-10">
+            <div class="col-sm-2">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class="col-sm-1">
+					<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+						<a th:if="${currentPage != i}"
+                           th:href="@{'/pagePet/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+						<span th:unless="${currentPage != i}">[[${i}]]</span>  &nbsp; &nbsp;
+					</span>
+            </div>
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}"
+                   th:href="@{'/pagePet/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}"
+                   th:href="@{'/pagePet/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

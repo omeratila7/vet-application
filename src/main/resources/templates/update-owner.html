@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Pet Owner System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="fragments/nav :: navbar"></div>
+<div class="container">
+
+    <br>
+    <h2>Update Pet Owner</h2>
+
+    <form action="#" th:action="@{/save-owner}" th:object="${owner}"
+          method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}"/>
+
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{surname}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{contact}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{phone}" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{email}" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Update Owner</button>
+    </form>
+
+    <hr>
+</div>
+</body>
+</html>

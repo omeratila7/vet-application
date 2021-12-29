@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Pet System</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+</head>
+<body>
+<div th:replace="fragments/nav :: navbar"></div>
+<div class="container">
+
+    <br>
+    <h2>Update Pet</h2>
+
+    <form action="#" th:action="@{/save-pet}" th:object="${pet}"
+          method="POST">
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}"/>
+
+        <input type="text" th:field="*{specie}" placeholder="specie" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{type}" placeholder="type" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{name}" placeholder="name" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{age}" placeholder="age" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{description}" placeholder="description" class="form-control mb-4 col-4">
+
+        <select class="form-control mb-4 col-4" th:field="*{owner}" id="dropOperator" t>
+            <option value="" disabled selected hidden>Choose a owner</option>
+            <option th:each="owner : ${owners}" th:value="${owner.id}" th:text="${owner.name}"></option>
+        </select>
+
+        <button type="submit" class="btn btn-info col-2"> Update Owner</button>
+    </form>
+
+    <hr>
+</div>
+</body>
+</html>
