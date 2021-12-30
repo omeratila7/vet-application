@@ -1,5 +1,6 @@
 package com.example.vetapplication.web;
 
+import com.example.vetapplication.model.Pet;
 import com.example.vetapplication.model.PetOwner;
 import com.example.vetapplication.service.PetOwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ public class PetOwnerController {
     // for listing pet owners
     @GetMapping("/pet-owners")
     public String viewPetOwners(Model model){
-        return findPaginated(1,"name", "asc", model);
+        List<PetOwner> listOwners = petOwnerService.getAllPetOwners();
+        model.addAttribute("listOwners",listOwners);
+        return "pet-owner";
     }
 
     @GetMapping("/new-owner-form")
@@ -49,29 +52,4 @@ public class PetOwnerController {
         this.petOwnerService.deletePetOwnersById(id);
         return "redirect:/pet-owners";
     }
-
-
-    @GetMapping("/pageOwner/{pageNo}")
-    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
-                                @RequestParam("sortField") String sortField,
-                                @RequestParam("sortDir") String sortDir,
-                                Model model) {
-        int pageSize = 6;
-
-        Page<PetOwner> page = petOwnerService.findPaginated(pageNo, pageSize, sortField, sortDir);
-        List<PetOwner> listOwners = page.getContent();
-
-        model.addAttribute("currentPage", pageNo);
-        model.addAttribute("totalPages", page.getTotalPages());
-        model.addAttribute("totalItems", page.getTotalElements());
-
-        model.addAttribute("sortField", sortField);
-        model.addAttribute("sortDir", sortDir);
-        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-
-        model.addAttribute("listOwners", listOwners);
-        return "pet-owner";
-    }
-
-
 }

@@ -11,6 +11,5 @@ public interface PetOwnerService {
     PetOwner getPetOwnersById(Long id);
     void deletePetOwnersById(Long id);
 
-    Page<PetOwner> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
 
 }

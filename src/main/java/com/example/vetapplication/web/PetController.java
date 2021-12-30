@@ -23,7 +23,9 @@ public class PetController {
 
     @GetMapping("/pets")
     public String viewPet(Model model){
-        return findPaginated(1,"name", "asc", model);
+        List<Pet> listPets = petService.getAllPets(null);
+        model.addAttribute("listPets",listPets);
+        return "pet";
     }
 
     @RequestMapping("/search-pet")
@@ -66,29 +68,6 @@ public class PetController {
 
         this.petService.deletePetById(id);
         return "redirect:/pets";
-    }
-
-
-    @GetMapping("/pagePet/{pageNo}")
-    public String findPaginated(@PathVariable(value = "pageNo") int pageNo,
-                                @RequestParam("sortField") String sortField,
-                                @RequestParam("sortDir") String sortDir,
-                                Model model) {
-        int pageSize = 6;
-
-        Page<Pet> page = petService.findPaginated(pageNo, pageSize, sortField, sortDir);
-        List<Pet> listPets = page.getContent();
-
-        model.addAttribute("currentPage", pageNo);
-        model.addAttribute("totalPages", page.getTotalPages());
-        model.addAttribute("totalItems", page.getTotalElements());
-
-        model.addAttribute("sortField", sortField);
-        model.addAttribute("sortDir", sortDir);
-        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-
-        model.addAttribute("listPets", listPets);
-        return "pet";
     }
 
 
