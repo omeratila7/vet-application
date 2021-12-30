@@ -44,7 +44,7 @@
         </thead>
         <tbody>
         <tr th:each="owner : ${listOwners}">
-            <td th:text="${owner.name}"></td>
+            <td><a th:href="@{'/search-pet?keyword='+${owner.name}}" th:text="${owner.name}"></a></td>
             <td th:text="${owner.surname}"></td>
             <td th:text="${owner.contact}"></td>
             <td th:text="${owner.phone}"></td>

@@ -1,16 +1,16 @@
 package com.example.vetapplication.web.dto;
 
 public class UserRegistrationDto {
-    private String name, surname, email, password;
+    private String name, surname, username, password;
 
     public UserRegistrationDto() {
 
     }
 
-    public UserRegistrationDto(String name, String surname, String email, String password) {
+    public UserRegistrationDto(String name, String surname, String username, String password) {
         this.name = name;
         this.surname = surname;
-        this.email = email;
+        this.username = username;
         this.password = password;
     }
 
@@ -30,12 +30,12 @@ public class UserRegistrationDto {
         this.surname = surname;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

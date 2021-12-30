@@ -13,20 +13,15 @@
     <h2>New Pet Owner</h2>
 
     <form action="#" th:action="@{/save-owner}" th:object="${owner}" method="POST">
-        <input type="text" th:field="*{name}"
-               placeholder="Name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{name}" placeholder="Name" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{surname}"
-               placeholder="Surname" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{surname}" placeholder="Surname" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{contact}"
-               placeholder="Contact" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{contact}" placeholder="Contact" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{phone}"
-               placeholder="Phone" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{phone}" placeholder="Phone" class="form-control mb-4 col-4">
 
-        <input type="text" th:field="*{email}"
-               placeholder="Email" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{email}" placeholder="Email" class="form-control mb-4 col-4">
 
         <button type="submit" class="btn btn-info col-2"> Save Pet Owner</button>
     </form>

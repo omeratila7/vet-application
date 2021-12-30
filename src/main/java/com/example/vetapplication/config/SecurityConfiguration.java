@@ -50,9 +50,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers(
                         "/registration",
-                        "/js/**",
                         "/",
-                        "/css/**",
                         "/img/**").permitAll()
                 .antMatchers("/update-pet-form/**","/delete-pet/**","/update-owner-form/**","/delete-owner/**").hasAnyAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()

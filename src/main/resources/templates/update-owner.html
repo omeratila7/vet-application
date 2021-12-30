@@ -17,7 +17,7 @@
     <form action="#" th:action="@{/save-owner}" th:object="${owner}"
           method="POST">
 
-        <!-- Add hidden form field to handle update -->
+        <!-- hidden field to keep id while update -->
         <input type="hidden" th:field="*{id}"/>
 
         <input type="text" th:field="*{name}" class="form-control mb-4 col-4">

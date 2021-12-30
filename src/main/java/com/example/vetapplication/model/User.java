@@ -4,13 +4,13 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "User", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "User", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String name, surname, email, password;
+    private String name, surname, username, password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -25,10 +25,10 @@ public class User {
     public User() {
     }
 
-    public User(String name, String surname, String email, String password, Collection<Role> roles) {
+    public User(String name, String surname, String username, String password, Collection<Role> roles) {
         this.name = name;
         this.surname = surname;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.roles = roles;
     }
@@ -57,12 +57,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserName() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

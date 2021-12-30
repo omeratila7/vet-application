@@ -9,9 +9,7 @@
 
 </head>
 <body>
-
-<!-- create navigation bar ( header) -->
-
+<!-- create navbar -->
 <div th:replace="fragments/nav :: navbar"></div>
 
 <br>
@@ -25,8 +23,7 @@
 
                 <!-- error message -->
                 <div th:if="${param.error}">
-                    <div class="alert alert-danger">Invalid username or
-                        password.
+                    <div class="alert alert-danger">Invalid username or password.
                     </div>
                 </div>
 
@@ -42,28 +39,23 @@
 
                 <div class="form-group">
                     <label for="username"> Username </label> :
-                    <input type="text" class="form-control" id="username" name="username"
-                           placeholder="Enter Email ID" autofocus="autofocus">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" autofocus="autofocus">
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>: <input type="password"
-                                                                   id="password" name="password" class="form-control"
-                                                                   placeholder="Enter Password"/>
+                    <label for="password">Password</label>: <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password"/>
                 </div>
 
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="login-submit" id="login-submit"
-                                   class="form-control btn btn-primary" value="Log In"/>
+                            <input type="submit" name="login-submit" id="login-submit" class="form-control btn btn-primary" value="Log In"/>
                         </div>
                     </div>
                 </div>
             </form>
             <div class="form-group">
-						<span>New user? <a href="/" th:href="@{/registration}">Register
-								here</a></span>
+						<span>New user? <a href="/" th:href="@{/registration}">Register here</a></span>
             </div>
         </div>
     </div>
