@@ -1,6 +1,6 @@
-#SPRING BOOT VET MANAGEMENT SYSTEM
+# SPRING BOOT VET MANAGEMENT SYSTEM
 
-##Technology that used
+## Technology that used
 
 | Technology                 | Description         |
 |----------------------------|---------------------|
@@ -10,7 +10,7 @@
 | Database                   | H2                  |
 | Frontend                   | Bootstrap,Thymeleaf |
 
-##How to run project
+## How to run project
 ```shell
 $ git clone https://github.com/omeratila7/vet-application.git
 $ cd vet-application
@@ -59,7 +59,7 @@ You can search pets from search pet tab by their name or owner's name.
 
 Also, you can search by clicking owners name at pets or owners name. 
 
-##Accessing data with H2 console
+## Accessing data with H2 console
 
 You can access H2 console with typing browser **http://localhost:8080/h2**
 
